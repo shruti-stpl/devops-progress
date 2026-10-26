@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>DevOps Roadmap: Base to Expert</title>
+<style>
+:root{--bg:#f6f9fd;--ink:#14213d;--mute:#5b6b85;--card:#fff;--line:#d5e2f3;--blue:#dbeafe;--blueb:#7fb2f5;--green:#22c55e;--greend:#15803d;--accent:#1d4ed8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1526;--ink:#e6edf8;--mute:#9fb0cb;--card:#142039;--line:#26375a;--blue:#1b3358;--blueb:#4a7fc7;--green:#22c55e;--greend:#4ade80;--accent:#7fb2f5;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d1526;--ink:#e6edf8;--mute:#9fb0cb;--card:#142039;--line:#26375a;--blue:#1b3358;--blueb:#4a7fc7;--green:#22c55e;--greend:#4ade80;--accent:#7fb2f5;color-scheme:dark}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 70px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px}
+.bar{max-width:980px;margin:auto;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bar h1{font-size:1.05rem;margin:0;font-weight:700}
+.meter{flex:1;min-width:140px;height:10px;background:var(--blue);border-radius:6px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--green);transition:width .3s}
+.pct{font-weight:700;min-width:48px;text-align:right}
+button{font:inherit;cursor:pointer;border:1px solid var(--blueb);background:var(--blue);color:var(--ink);border-radius:8px;padding:5px 12px}
+button:hover{border-color:var(--accent)}
+button:focus-visible,a:focus-visible,input:focus-visible+span{outline:3px solid var(--accent);outline-offset:2px}
+main{max-width:980px;margin:auto;padding:20px 16px 60px}
+.intro{color:var(--mute);margin:0 0 18px;max-width:70ch}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:22px}
+.chart h2{margin:0 0 10px;font-size:1.1rem}
+.sum{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.sum div{background:var(--blue);border-radius:10px;padding:8px 14px;min-width:110px}
+.sum b{display:block;font-size:1.4rem}
+.sum small{color:var(--mute)}
+.row{display:grid;grid-template-columns:minmax(120px,210px) 1fr 44px;gap:10px;align-items:center;padding:4px 0;color:inherit;text-decoration:none;font-size:.92rem}
+.row:hover .nm{color:var(--accent)}
+.trk{height:14px;background:var(--blue);border-radius:7px;overflow:hidden}
+.trk i{display:block;height:100%;background:var(--green);width:0;transition:width .3s}
+.row em{font-style:normal;text-align:right;color:var(--mute)}
+.lvl{margin:26px 0 8px;font-size:1.25rem}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:0 0 12px}
+summary{cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:12px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary .t{flex:1;font-weight:650}
+summary .t small{display:block;font-weight:400;color:var(--mute)}
+summary .c{color:var(--mute);font-size:.9rem;white-space:nowrap}
+summary::after{content:"+";font-size:1.3rem;color:var(--accent)}
+details[open] summary::after{content:"\2212"}
+details.done{border-color:var(--green)}
+details.done summary .c{color:var(--greend);font-weight:700}
+.body{padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:720px){.body{grid-template-columns:1fr}.row{grid-template-columns:110px 1fr 40px}}
+.body h3{font-size:.95rem;margin:0 0 8px;color:var(--mute)}
+label.k{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;margin:0 0 6px;border-radius:8px;background:var(--blue);border:1px solid var(--blueb);cursor:pointer;transition:background .15s,border-color .15s}
+label.k input{position:absolute;opacity:0}
+label.k .bx{flex:none;width:20px;height:20px;margin-top:2px;border:2px solid var(--blueb);border-radius:5px;background:var(--card);display:grid;place-items:center}
+label.k input:checked+.bx{background:var(--green);border-color:var(--green)}
+label.k input:checked+.bx::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+label.k:has(input:checked){background:rgba(34,197,94,.22);border-color:var(--green)}
+label.k:has(input:checked) .tx{text-decoration:line-through;text-decoration-color:var(--greend);color:var(--mute)}
+ul{list-style:none;margin:0;padding:0}
+li.r{margin:0 0 7px}
+li.r a{color:var(--accent);text-decoration:none;font-weight:600}
+li.r a:hover{text-decoration:underline}
+li.r span{display:inline-block;font-size:.75rem;padding:1px 8px;border-radius:10px;background:var(--blue);color:var(--mute);margin-right:6px;font-weight:600}
+.go{display:flex;gap:8px;margin-left:auto}
+footer{color:var(--mute);font-size:.88rem;margin-top:26px}
+</style>
+</head>
+<body>
+<header><div class="bar">
+<h1>DevOps roadmap</h1>
+<div class="meter" role="progressbar" aria-label="Overall progress"><i id="mt"></i></div>
+<span class="pct" id="pc">0%</span>
+<button id="nx" type="button">Jump to next topic</button>
+</div></header>
+<main>
+<p class="intro">Work top to bottom, from base to expert. There are no deadlines: tick a topic when you can do it without looking it up. Your ticks are saved in this browser.</p>
+<section class="chart" id="chart" aria-label="Progress chart">
+<h2>Progress chart</h2>
+<div class="sum"><div><b id="s1">0</b><small>topics done</small></div><div><b id="s2">0</b><small>topics left</small></div><div><b id="s3">0/0</b><small>stages finished</small></div></div>
+<div id="rows"></div>
+</section>
+<div id="app"></div>
+<footer>Free tools used throughout: KodeKloud free labs and YouTube channel, TechWorld with Nana, freeCodeCamp, official docs, Killercoda and Play with Docker for hands-on practice. Check each site for what is free today, because course catalogues change.</footer>
+</main>
+<script>
+var YT=function(q){return "https://www.youtube.com/results?search_query="+encodeURIComponent(q)};
+var KK="https://www.youtube.com/@KodeKloud";
+var P=[
+{lv:"Base",t:"Computer and IT foundations",s:"What runs your code, and where",
+i:["Explain what an OS, process, memory, disk and CPU do","Understand client-server model and how a web request works","Know what IP, DNS, HTTP/HTTPS, ports and TCP/UDP are","Learn the DevOps lifecycle: plan, code, build, test, release, deploy, operate, monitor","Understand Agile, Scrum and why DevOps culture exists"],
+r:[["Video","DevOps roadmap overview (KodeKloud)",YT("KodeKloud DevOps roadmap")],["Site","roadmap.sh DevOps map","https://roadmap.sh/devops"],["Video","freeCodeCamp: DevOps course for beginners",YT("freeCodeCamp DevOps beginners course")],["Video","Computer Networking basics (freeCodeCamp)",YT("freeCodeCamp computer networking full course")]]},
+{lv:"Base",t:"Linux and the command line",s:"The home of almost every server",
+i:["Navigate the filesystem, create, move, copy and delete files","Manage users, groups and file permissions (chmod, chown)","Use grep, find, sed, awk, cut, sort, pipes and redirects","Manage processes and services (ps, top, systemctl, journalctl)","Install software with apt/yum and manage packages","Use SSH, scp and key-based login","Read logs and troubleshoot a broken service"],
+r:[["Free labs","KodeKloud free labs (Linux)","https://kodekloud.com/free-labs"],["Video","KodeKloud Linux videos",YT("KodeKloud Linux for beginners")],["Study","Linux Journey (free lessons)","https://linuxjourney.com"],["Practice","OverTheWire Bandit game","https://overthewire.org/wargames/bandit/"],["Video","Linux command line full course (freeCodeCamp)",YT("freeCodeCamp Linux command line full course")]]},
+{lv:"Base",t:"Git and GitHub",s:"Version control and teamwork",
+i:["Init, add, commit, status, log, diff","Create branches and merge them","Resolve a merge conflict","Use remotes: clone, fetch, pull, push","Open pull requests and do a code review","Rebase, stash, cherry-pick, tags","Know a branching strategy (GitFlow, trunk-based)"],
+r:[["Study","Pro Git book (free)","https://git-scm.com/book/en/v2"],["Practice","Learn Git Branching (interactive)","https://learngitbranching.js.org"],["Video","Git and GitHub for beginners (freeCodeCamp)",YT("freeCodeCamp Git and GitHub for beginners")],["Free labs","KodeKloud free labs","https://kodekloud.com/free-labs"]]},
+{lv:"Base",t:"Scripting: Bash and Python",s:"Automate anything repetitive",
+i:["Write Bash scripts with variables, loops, conditions and functions","Handle arguments, exit codes and error checking in Bash","Schedule jobs with cron","Python basics: types, loops, functions, modules","Read and write files, JSON and YAML in Python","Call REST APIs with requests","Automate a real task, such as a backup or log cleanup script"],
+r:[["Video","KodeKloud shell scripting videos",YT("KodeKloud shell scripting for beginners")],["Video","Bash scripting full course (freeCodeCamp)",YT("freeCodeCamp bash scripting full course")],["Video","Python for beginners (freeCodeCamp)",YT("freeCodeCamp Python for beginners")],["Study","Official Python tutorial","https://docs.python.org/3/tutorial/"]]},
+{lv:"Intermediate",t:"Containers with Docker",s:"Package once, run anywhere",
+i:["Understand images, containers, layers and registries","Run, stop, inspect and remove containers","Write a Dockerfile and build an image","Use volumes and bind mounts","Understand Docker networking","Use Docker Compose for multi-container apps","Push an image to Docker Hub","Optimise images: multi-stage builds, small base images, non-root user"],
+r:[["Free labs","KodeKloud free labs (Docker)","https://kodekloud.com/free-labs"],["Video","KodeKloud Docker videos",YT("KodeKloud Docker for the absolute beginner")],["Video","TechWorld with Nana: Docker tutorial",YT("TechWorld with Nana Docker tutorial")],["Practice","Play with Docker (browser sandbox)","https://labs.play-with-docker.com"],["Study","Docker Get Started docs","https://docs.docker.com/get-started/"]]},
+{lv:"Intermediate",t:"CI/CD pipelines",s:"Automate build, test and release",
+i:["Explain continuous integration, delivery and deployment","Build a GitHub Actions workflow that runs tests","Build and push a Docker image from a pipeline","Use secrets and environment variables safely","Learn Jenkins basics: jobs, Jenkinsfile, agents","Deploy automatically to a server or cloud service","Add caching, matrix builds and approval gates","Try GitLab CI as a second tool"],
+r:[["Study","GitHub Actions docs","https://docs.github.com/en/actions"],["Video","KodeKloud CI/CD videos",YT("KodeKloud GitHub Actions Jenkins tutorial")],["Video","TechWorld with Nana: CI/CD",YT("TechWorld with Nana CI/CD pipeline")],["Video","Jenkins tutorial for beginners",YT("Jenkins tutorial for beginners")],["Free labs","KodeKloud free labs","https://kodekloud.com/free-labs"]]},
+{lv:"Intermediate",t:"Cloud fundamentals (AWS first)",s:"Rent the data centre",
+i:["Understand IaaS, PaaS, SaaS and shared responsibility","Create an account and set a billing alert","Use IAM: users, roles, policies, MFA","Launch and connect to EC2","Use S3 buckets and permissions","Build a VPC with subnets, route tables and security groups","Use RDS, load balancers and auto scaling","Know the Azure or GCP equivalents of each service"],
+r:[["Video","KodeKloud AWS videos",YT("KodeKloud AWS cloud practitioner")],["Study","AWS Skill Builder free digital courses","https://skillbuilder.aws"],["Video","AWS Cloud Practitioner course (freeCodeCamp)",YT("freeCodeCamp AWS Certified Cloud Practitioner")],["Study","Microsoft Learn (Azure, free)","https://learn.microsoft.com/training/"]]},
+{lv:"Advanced",t:"Infrastructure as Code",s:"Servers described in files",
+i:["Understand declarative vs imperative and idempotency","Write Terraform: providers, resources, variables, outputs","Run init, plan, apply and destroy safely","Use remote state with locking","Build and reuse modules","Manage dev, test and prod environments","Write Ansible playbooks, inventories and roles","Use Ansible to configure servers that Terraform created"],
+r:[["Free labs","KodeKloud free labs (Terraform, Ansible)","https://kodekloud.com/free-labs"],["Video","KodeKloud Terraform videos",YT("KodeKloud Terraform for beginners")],["Study","HashiCorp Terraform tutorials","https://developer.hashicorp.com/terraform/tutorials"],["Video","Ansible full course (freeCodeCamp)",YT("freeCodeCamp Ansible full course")],["Study","Ansible getting started","https://docs.ansible.com/ansible/latest/getting_started/"]]},
+{lv:"Advanced",t:"Kubernetes",s:"Run containers at scale",
+i:["Describe the control plane, nodes, kubelet and etcd","Create Pods, Deployments and ReplicaSets with YAML","Expose apps with Services and Ingress","Use ConfigMaps and Secrets","Use PersistentVolumes and PersistentVolumeClaims","Set resource requests, limits and probes","Do rolling updates and rollbacks","Use namespaces, RBAC and network policies","Package apps with Helm","Debug with kubectl logs, describe, exec and events"],
+r:[["Free labs","KodeKloud free labs (Kubernetes)","https://kodekloud.com/free-labs"],["Video","KodeKloud Kubernetes for beginners",YT("KodeKloud Kubernetes for the absolute beginners")],["Video","TechWorld with Nana: Kubernetes tutorial",YT("TechWorld with Nana Kubernetes tutorial for beginners")],["Study","Kubernetes official tutorials","https://kubernetes.io/docs/tutorials/"],["Practice","Killercoda interactive scenarios","https://killercoda.com"]]},
+{lv:"Advanced",t:"Monitoring, logging and observability",s:"Know what your system is doing",
+i:["Understand metrics, logs and traces","Install Prometheus and write PromQL queries","Build Grafana dashboards","Set alerts with Alertmanager","Centralise logs with Loki or the ELK stack","Add tracing with OpenTelemetry","Define SLIs, SLOs and error budgets"],
+r:[["Study","Prometheus docs","https://prometheus.io/docs/introduction/overview/"],["Study","Grafana tutorials","https://grafana.com/tutorials/"],["Video","KodeKloud Prometheus videos",YT("KodeKloud Prometheus Grafana")],["Video","TechWorld with Nana: Prometheus",YT("TechWorld with Nana Prometheus monitoring")]]},
+{lv:"Expert",t:"DevSecOps and GitOps",s:"Ship fast and stay safe",
+i:["Scan code, dependencies and images in the pipeline (Trivy, SonarQube)","Manage secrets with Vault or a cloud secret manager","Apply least privilege and network segmentation","Use policy as code (OPA, Kyverno)","Practise GitOps with Argo CD or Flux","Learn the OWASP Top 10 and CIS benchmarks","Sign images and track a software bill of materials"],
+r:[["Video","KodeKloud DevSecOps and Argo CD videos",YT("KodeKloud Argo CD GitOps")],["Study","Argo CD docs","https://argo-cd.readthedocs.io/"],["Study","OWASP Top 10","https://owasp.org/www-project-top-ten/"],["Study","Trivy docs","https://trivy.dev/latest/docs/"]]},
+{lv:"Expert",t:"SRE, reliability and platform engineering",s:"Operate like a senior engineer",
+i:["Run incident response and write blameless postmortems","Practise chaos engineering","Plan capacity and cost (FinOps)","Design for high availability and disaster recovery","Build an internal developer platform mindset","Use a service mesh such as Istio or Linkerd","Learn multi-cloud and multi-cluster patterns"],
+r:[["Study","Google SRE books (free online)","https://sre.google/books/"],["Video","KodeKloud SRE and DevOps videos",YT("KodeKloud SRE")],["Study","CNCF landscape","https://landscape.cncf.io"]]},
+{lv:"Expert",t:"Capstone projects and career",s:"Prove it with real work",
+i:["Project 1: containerise an app and deploy it with a CI/CD pipeline","Project 2: provision cloud infrastructure with Terraform","Project 3: deploy to Kubernetes with Helm and Argo CD","Project 4: add Prometheus and Grafana monitoring","Publish everything on GitHub with clear READMEs","Build a resume and LinkedIn profile around these projects","Optional: prepare for CKA, Terraform Associate or AWS DevOps certifications"],
+r:[["Free labs","KodeKloud free labs","https://kodekloud.com/free-labs"],["Video","KodeKloud YouTube channel",KK],["Video","DevOps projects for resume",YT("DevOps projects for beginners resume")],["Site","roadmap.sh DevOps map","https://roadmap.sh/devops"]]}
+];
+var KEY="devops-roadmap-v1",S={};
+try{S=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+var app=document.getElementById("app"),rows=document.getElementById("rows"),last="";
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+P.forEach(function(p,n){
+ if(p.lv!==last){last=p.lv;var h=document.createElement("h2");h.className="lvl";h.textContent=p.lv+" level";app.appendChild(h)}
+ var d=document.createElement("details");d.id="p"+n;
+ var h='<summary><span class="t">'+(n+1)+". "+esc(p.t)+"<small>"+esc(p.s)+'</small></span><span class="c" id="c'+n+'"></span></summary><div class="body"><div><h3>What to learn</h3>';
+ p.i.forEach(function(x,j){h+='<label class="k"><input type="checkbox" data-k="'+n+"-"+j+'"><span class="bx"></span><span class="tx">'+esc(x)+"</span></label>"});
+ h+='</div><div><h3>Free resources</h3><ul>';
+ p.r.forEach(function(r){h+='<li class="r"><span>'+r[0]+'</span><a href="'+r[2]+'" target="_blank" rel="noopener">'+esc(r[1])+"</a></li>"});
+ h+="</ul></div></div>";d.innerHTML=h;app.appendChild(d);
+ var a=document.createElement("a");a.className="row";a.href="#p"+n;a.innerHTML='<span class="nm">'+(n+1)+". "+esc(p.t)+'</span><span class="trk"><i id="b'+n+'"></i></span><em id="e'+n+'">0%</em>';
+ a.onclick=function(e){e.preventDefault();d.open=true;d.scrollIntoView()};rows.appendChild(a);
+});
+var boxes=[].slice.call(document.querySelectorAll("input[data-k]"));
+boxes.forEach(function(b){b.checked=!!S[b.dataset.k];b.onchange=function(){if(b.checked)S[b.dataset.k]=1;else delete S[b.dataset.k];save();upd()}});
+function upd(){
+ var tot=0,done=0,fin=0;
+ P.forEach(function(p,n){
+  var c=0;p.i.forEach(function(_,j){if(S[n+"-"+j])c++});
+  var pc=Math.round(c/p.i.length*100);tot+=p.i.length;done+=c;
+  document.getElementById("b"+n).style.width=pc+"%";
+  document.getElementById("e"+n).textContent=pc+"%";
+  document.getElementById("c"+n).textContent=c===p.i.length?"Done":c+"/"+p.i.length;
+  var d=document.getElementById("p"+n);d.classList.toggle("done",c===p.i.length);if(c===p.i.length)fin++;
+ });
+ var o=Math.round(done/tot*100);
+ document.getElementById("mt").style.width=o+"%";document.getElementById("pc").textContent=o+"%";
+ document.getElementById("s1").textContent=done;document.getElementById("s2").textContent=tot-done;document.getElementById("s3").textContent=fin+"/"+P.length;
+}
+document.getElementById("nx").onclick=function(){
+ var b=boxes.filter(function(x){return !x.checked})[0];
+ if(!b)return;var d=b.closest("details");d.open=true;b.closest("label").scrollIntoView({block:"center"});
+};
+upd();
+</script>
+</body>
+</html>
